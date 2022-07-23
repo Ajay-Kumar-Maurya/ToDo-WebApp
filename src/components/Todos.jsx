@@ -9,11 +9,13 @@ export const Todos = (props) => {
          {/* Important for looping in array
          Using key is option but best practice.
           */}
-         {props.todos.map((todo) => {
-            return <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete}/>
-         })}
+         {props.todos.length === 0 ? "No ToDos to display" :
+            props.todos.map((todo) => {
+               return <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete} />
+            })
+         }
 
-         <hr/>
+         <hr />
 
          {/* Important when we want to return multpile tags and looping in array.
          We need to use parentheses and wrap all tags.
@@ -24,7 +26,7 @@ export const Todos = (props) => {
             return (
                <>
                   <h3>Simple H3 Tag</h3>
-                  <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete}/>
+                  <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete} />
                </>
             )
          })}

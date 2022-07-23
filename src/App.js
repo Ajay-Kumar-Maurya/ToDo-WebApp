@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';   // Default Import
 import { Todos } from './components/Todos'; // Named Import
 import { Footer } from './components/Footer';
+import React, { useState } from 'react';
 
 function App() {
   const onDelete= (todo) => {
@@ -9,8 +10,13 @@ function App() {
     // Deleting this way in react will not upadate frontend.
     // let index = todos.indexOf(todo);
     // todos.splice(index, 1);
+
+    // Here we utilize the concepts of useState. Convert array to useState.
+    setTodos(todos.filter((e)=>{
+      return e!==todo
+    }))
   }
-  let todos = [
+  const [todos, setTodos] = useState([
     {
       sno: 1,
       title: "Job 1",
@@ -26,7 +32,7 @@ function App() {
       title: "Job 3",
       desc: "Go and complete job 3"
     }
-  ]
+  ])
 
   return (
     <>
