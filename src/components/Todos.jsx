@@ -2,9 +2,12 @@ import React from 'react'
 import { TodoItem } from './TodoItem'
 
 export const Todos = (props) => {
+   let myStyle = {
+      minHeight : "70vh"
+   }
    return (
-      <div className='container'>
-         <h3 className='text-center'>ToDo List</h3>
+      <div className='container my-3' style={myStyle}>
+         <h3 className='my-3'>ToDo List</h3>
 
          {/* Important for looping in array
          Using key is option but best practice.
