@@ -11,6 +11,10 @@ export const AddTodo = (props) => {
          alert("Title or Description cannot be blank.")
       }
       props.addTodo(title, desc)
+
+      // Reset Input values after creating todo
+      setTitle("")
+      setDesc("")
    }
    return (
       <div className='container my-3'>
