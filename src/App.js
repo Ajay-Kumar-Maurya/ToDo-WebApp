@@ -13,11 +13,12 @@ function App() {
     else
       sno = todos[todos.length-1].sno + 1
 
-    let myTodo={
+    const myTodo={
       sno: sno,
       title: title,
       decs: desc
     }
+    // Now We need to prevent adding empty todo items.// i have to do it.
     setTodos([...todos, myTodo])
     console.log("adding todo", myTodo)
   }

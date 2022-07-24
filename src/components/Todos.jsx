@@ -3,7 +3,8 @@ import { TodoItem } from './TodoItem'
 
 export const Todos = (props) => {
    let myStyle = {
-      minHeight : "70vh"
+      minHeight: "70vh",
+      margin: "40px auto"
    }
    return (
       <div className='container my-3' style={myStyle}>
@@ -14,25 +15,14 @@ export const Todos = (props) => {
           */}
          {props.todos.length === 0 ? "No ToDos to display" :
             props.todos.map((todo) => {
-               return <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete} />
+               return (
+                  <>
+                     <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete} />
+                     <hr />
+                  </>
+               )
             })
          }
-
-         <hr />
-
-         {/* Important when we want to return multpile tags and looping in array.
-         We need to use parentheses and wrap all tags.
-
-         Doubt : Below code shows warning fpr unique key
-         */}
-         {props.todos.map((todo) => {
-            return (
-               <>
-                  <h3>Simple H3 Tag</h3>
-                  <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete} />
-               </>
-            )
-         })}
 
       </div>
    )
