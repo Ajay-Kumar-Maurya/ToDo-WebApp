@@ -18,8 +18,10 @@ function App() {
       title: title,
       decs: desc
     }
-    // Now We need to prevent adding empty todo items.// i have to do it.
+    if(title==="" || desc==="") return
+
     setTodos([...todos, myTodo])
+    
     console.log("adding todo", myTodo)
   }
   const onDelete= (todo) => {
