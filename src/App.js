@@ -6,6 +6,14 @@ import { AddTodo } from './components/AddTodo';
 import React, { useState } from 'react';
 
 function App() {
+  let initTodo;
+  if(localStorage.getItem("todos")===null){
+    initTodo = []
+  }else {
+    initTodo = JSON.parse(localStorage.getItem("todos"))
+  }
+
+
   const addTodo = (title, desc)=>{
     let sno
     if(todos.length === 0)
@@ -18,11 +26,13 @@ function App() {
       title: title,
       decs: desc
     }
-    if(title==="" || desc==="") return
+    if(title==="" || desc==="" || isNaN(sno)===true) return
 
     setTodos([...todos, myTodo])
-    
+
     console.log("adding todo", myTodo)
+
+    localStorage.setItem("todos", JSON.stringify(todos))
   }
   const onDelete= (todo) => {
     console.log('Deleted Todo !!!', todo)
@@ -34,24 +44,9 @@ function App() {
     setTodos(todos.filter((e)=>{  // nice trick to delete
       return e!==todo
     }))
+    localStorage.setItem("todos", JSON.stringify(todos))
   }
-  const [todos, setTodos] = useState([
-    {
-      sno: 1,
-      title: "Job 1",
-      desc: "Go and complete job 1"
-    },
-    {
-      sno: 2,
-      title: "Job 2",
-      desc: "Go and complete job 2"
-    },
-    {
-      sno: 3,
-      title: "Job 3",
-      desc: "Go and complete job 3"
-    }
-  ])
+  const [todos, setTodos] = useState([initTodo])
 
   return (
     <>
