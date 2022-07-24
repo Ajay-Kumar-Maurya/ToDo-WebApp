@@ -3,7 +3,13 @@ import Header from './components/Header';   // Default Import
 import { Todos } from './components/Todos'; // Named Import
 import { Footer } from './components/Footer';
 import { AddTodo } from './components/AddTodo';
-import React, { useState, useEffect } from 'react';
+import { About } from './components/About';
+import React, { useState, useEffect, Fragment } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 function App() {
   let initTodo;
@@ -57,10 +63,19 @@ function App() {
       {/* String ko paas krne k liye single/double quote use krte hai.
     But other data/variable ki valse ko paas krne k liye braces ka use hota hai.
      */}
-      <Header title="MyTodosList" searchBar={false} />
-      <AddTodo addTodo={addTodo} />
-      <Todos todos={todos} onDelete={onDelete} />
-      <Footer />
+      <Router>
+        <Header title="MyTodosList" searchBar={false} />
+
+        <Routes>
+          <Route exact path="/" element={<><AddTodo addTodo={addTodo} />
+                <Todos todos={todos} onDelete={onDelete} /></>}/>
+
+          <Route exact path="/about" element={<About />}/>
+        </Routes>
+
+
+        <Footer />
+      </Router>
     </>
   );
 }
